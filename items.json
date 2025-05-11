@@ -1,0 +1,6 @@
+{
+  "accessory": ["accessory-1.png", "bag-1.png", "beanie-1.png","hat-1.png", "hat-2.png", "necklace.png", "scarf-1.png", "shoes-1.png"],
+  "bottom": ["pants-1.png", "pants-2.png", "skirt-1.png", "skirt-2.png"],
+  "dress": ["dress-1.png", "dress-2.png", "thobe-1.png"],
+  "top": ["sweater-1.png", "top-1.png", "top-2.png", "top-3.png"]
+}

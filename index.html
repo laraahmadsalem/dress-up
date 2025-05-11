@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dress Up Hello Kitty</title>
+
+  <!-- set up favicon -->
+  <link rel="icon" type="image/png" href="./assets/favicon.png" sizes="24x24">
+  <link rel="stylesheet" href="style.css" />
+  <!-- external fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<div class="container">    
+  <div class="inner-container">
+
+    <div class="main-text">
+      <h1> Dress Up Hello Kitty</h1>
+    </div>
+
+    <div>
+
+      <!-- Navigation Arrows -->
+      <button id="left-background-button">←</button>
+
+      <!-- Outfit Display Area -->
+      <div class="outfit-container">
+        <div id="outfit-display">
+          <img id="head" src="assets/dress-up-elements/head.png" alt="Head">
+          <img id="shirt" alt="Shirt">
+          <img id="skirt" alt="Skirt">
+          <img id="hat" alt="Hat">
+        </div>
+      </div>
+
+      <button id="right-background-button">→</button>
+
+      <!-- Outfit Category Buttons -->
+      <div class="option-panel"> 
+        <button id="shirt-button" class="option-button">👕</button>
+        <button id="skirt-button" class="option-button">👗</button>
+        <button id="hat-button" class="option-button">🎩</button>
+        <button id="done-button">✅</button>
+      </div>
+    </div>  
+
+    <!-- Selection Panel (populated via JS) -->
+    <div class="selection-container">
+      <div id="shirt-options" class="item-options"></div>
+      <div id="skirt-options" class="item-options"></div>
+      <div id="hat-options" class="item-options"></div>
+    </div>
+
+  </div>
+</div>
+<body>
+  <!-- Link to your JavaScript - don't change unless you rename index.js -->
+  <script src="index.js"></script>

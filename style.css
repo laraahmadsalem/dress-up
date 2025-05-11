@@ -1,0 +1,234 @@
+/* Customization Variables */
+:root {
+    /* Colors */
+    --color-page-background: #50AFC9;
+    --color-main-container-background: #FF5B70;
+    --color-inner-container-background: #FFF7F4;
+    --color-border: #9E0E2B;
+    --color-button-background: #FFF;
+    --color-heading-text: #FFF;
+    --color-button-text: #9E0E2B;
+    --color-message-text: #9E0E2B;
+    
+    /* Images */
+    --image-path-background: url('assets/main-bg.png');
+    --image-path-content: url('assets/image-content/image-1.png');
+    
+    /* Fonts */
+    --font-family-main: "Pixelify Sans", sans-serif;
+    --font-size-large: 1.75rem;
+    --font-size-medium: 1.5635rem;
+    
+    /* Border Radius */
+    --border-radius: 0.31269rem;
+    
+    /* Border Width */
+    --border-width-main: 3px;
+    --border-width-inner: 3.413px;
+    
+    /* Spacing */
+    --padding-container: 0.62538rem;
+    --gap-icons: 0.375rem;
+    --gap-button: 0.58369rem;
+  }
+  
+body {
+  margin: 0;
+  background: #e0f7fa;
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.frame {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 10px #aaa;
+  text-align: center;
+  width: 300px;
+}
+
+  /* Shrink Close Icons */
+  .shrink-close-icons {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-icons);
+  }
+  /* Icons */
+  .shrink-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 2px;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+.display-area {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 10px;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+}
+
+.tabs button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  background: #b2ebf2;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.items-grid {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.items-grid img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 6px;
+}
+
+.items-grid img:hover {
+  border-color: #4dd0e1;
+}
+
+/* General container styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f9f9f9;
+  font-family: 'Pixelify Sans', sans-serif;
+}
+
+.inner-container {
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Background container */
+.pochacco-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #397c64;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Outfit display area */
+.outfit-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#outfit-display img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+
+/* Background navigation buttons */
+#left-background-button,
+#right-background-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#left-background-button {
+  left: 10px;
+}
+
+#right-background-button {
+  right: 10px;
+}
+
+/* Option panel */
+.option-panel {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.option-button {
+  width: 50px;
+  height: 50px;
+  margin: 0 5px;
+  border: 2px solid #397c64;
+  border-radius: 50%;
+  background-color: #f9ffdb;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.option-button:hover {
+  transform: scale(1.1);
+}
+
+/* Selection container */
+.selection-container {
+  margin-top: 20px;
+}
+
+.selection-container > div {
+  display: none;
+  justify-content: center;
+  gap: 10px;
+}
+
+.selection-container button {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #397c64;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.selection-container button:hover {
+  transform: scale(1.1);
+}
+
+/* Main text styling */
+.main-text {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#text-content {
+  max-width: 100%;
+  height: auto;
+}
