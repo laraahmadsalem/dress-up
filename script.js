@@ -1,68 +1,74 @@
-let items = {}; // Initialize an empty object to store items
-let currentTab = 'shirts'; // Default tab
-let backgrounds = ['blue-background.png', 'pink-background.png', 'green-background.png']; // Backgrounds
-let currentBackgroundIndex = 0; // Track the current background
+const clothesByCategory = {
+  accessory: ["assets/accessory/accessory-1.png", "assets/accessory/bag-1.png", "assets/accessory/beanie-1.png","assets/accessory/hat-1.png", "assets/accessory/hat-2.png", "assets/accessory/necklace.png", "assets/accessory/scarf-1.png", "assets/accessory/shoes-1.png"],
+  bottom: ["assets/bottom/pants-1.png", "assets/bottom/pants-2.png", "assets/bottom/skirt-1.png", "assets/bottom/skirt-2.png"],
+  dress: ["assets/dress/dress-1.png", "assets/dress/dress-2.png", "assets/dress/thobe-1.png"],
+  top: ["assets/top/sweater-1.png", "assets/top/top-1.png", "assets/top/top-2.png", "assets/top/top-3.png"]
+};
 
-// Switch between tabs (e.g., shirts, skirts, hats)
-function switchTab(tab) {
-  currentTab = tab;
-  renderItems();
-}
+let currentCategory = "accessory";
+let currentPage = 0;
+const itemsPerPage = 4;
 
-// Render items for the current tab
-function renderItems() {
-  const container = document.getElementById(`${currentTab}-options`);
-  const allContainers = document.querySelectorAll('.selection-container > div');
-  allContainers.forEach(div => (div.style.display = 'none')); // Hide all options
-  container.style.display = 'flex'; // Show the current tab's options
+// Load a category when a tab is clicked
+document.querySelectorAll('.tab-button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentCategory = btn.dataset.category;
+    currentPage = 0;
+    renderClothingOptions();
+  });
+});
 
-  container.innerHTML = ''; // Clear existing items
-  items[currentTab].forEach((item, index) => {
-    const button = document.createElement('button');
-    button.id = `${currentTab}-${index + 1}`;
-    button.style.backgroundImage = `url('assets/${currentTab}/${item}')`;
-    button.onclick = () => {
-      document.getElementById(currentTab.slice(0, -1)).src = `assets/${currentTab}/${item}`;
-    };
-    container.appendChild(button);
+// Render 4 clothing items at a time
+function renderClothingOptions() {
+  const container = document.querySelector('.clothes-container');
+  container.innerHTML = ''; // Clear previous
+
+  // Show/hide pagination buttons
+  document.getElementById('back-button').style.visibility = currentPage > 0 ? 'visible' : 'hidden';
+
+  const totalItems = clothesByCategory[currentCategory].length;
+  const nextButton = document.getElementById('next-button');
+  nextButton.style.visibility = ((currentPage + 1) * itemsPerPage < totalItems) ? 'visible' : 'hidden';
+
+
+  const items = clothesByCategory[currentCategory];
+  const start = currentPage * itemsPerPage;
+  const pageItems = items.slice(start, start + itemsPerPage);
+
+  pageItems.forEach((src, index) => {
+    const btn = document.createElement('button');
+    btn.classList.add('clothing-item');
+    btn.innerHTML = `<img src="${src}" alt="${currentCategory} item ${index}" />`;
+    btn.addEventListener('click', () => {
+      const characterImg = document.getElementById(`character-${currentCategory}`);
+      
+      if (characterImg.src.includes(src)) {
+        characterImg.removeAttribute('src'); // Safe removal of image
+      } else {
+        characterImg.src = src;
+      }
+    });
+
+    container.appendChild(btn);
   });
 }
 
-// Change background using left and right buttons
-function changeBackground(direction) {
-  if (direction === 'left') {
-    currentBackgroundIndex = (currentBackgroundIndex - 1 + backgrounds.length) % backgrounds.length;
-  } else if (direction === 'right') {
-    currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
+// Pagination
+document.getElementById('back-button').addEventListener('click', () => {
+  if (currentPage > 0) {
+    currentPage--;
+    renderClothingOptions();
   }
-  document.querySelector('.pochacco-container').style.backgroundImage = `url('assets/background/${backgrounds[currentBackgroundIndex]}')`;
-}
+});
 
-// Load items from items.json
-async function loadItems() {
-  try {
-    const response = await fetch('items.json');
-    if (!response.ok) throw new Error('Failed to load items.json');
-    items = await response.json();
-    renderItems(); // Render items after loading
-  } catch (error) {
-    console.error('Error loading items:', error);
+document.getElementById('next-button').addEventListener('click', () => {
+  const totalItems = clothesByCategory[currentCategory].length;
+  if ((currentPage + 1) * itemsPerPage < totalItems) {
+    currentPage++;
+    renderClothingOptions();
   }
-}
+});
 
-// Initialize the page
-window.onload = () => {
-  document.getElementById('hat').src = '';
-  document.getElementById('shirt').src = '';
-  document.getElementById('skirt').src = '';
-  loadItems();
-
-  // Add event listeners for background buttons
-  document.getElementById('left-background-button').onclick = () => changeBackground('left');
-  document.getElementById('right-background-button').onclick = () => changeBackground('right');
-
-  // Add event listeners for tab buttons
-  document.getElementById('shirt-button').onclick = () => switchTab('shirts');
-  document.getElementById('skirt-button').onclick = () => switchTab('skirts');
-  document.getElementById('hat-button').onclick = () => switchTab('hats');
-};
+document.addEventListener("DOMContentLoaded", () => {
+  renderClothingOptions();
+});

@@ -13,48 +13,59 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<div class="container">    
-  <div class="inner-container">
 
-    <div class="main-text">
-      <h1> Dress Up Hello Kitty</h1>
+<body> 
+  <div class="body">
+    <!-- TITLE -->
+    <div class="hearts-container">
+       <img src="assets/heart1.png" alt="Heart Icon Left" class="heartIcon">
+        <h1 class="title">Dress Me Up</h1>
+        <img src="assets/heart2.png" alt="Heart Icon Right" class="heartIcon">
     </div>
-
-    <div>
-
-      <!-- Navigation Arrows -->
-      <button id="left-background-button">←</button>
-
-      <!-- Outfit Display Area -->
-      <div class="outfit-container">
-        <div id="outfit-display">
-          <img id="head" src="assets/dress-up-elements/head.png" alt="Head">
-          <img id="shirt" alt="Shirt">
-          <img id="skirt" alt="Skirt">
-          <img id="hat" alt="Hat">
+        <!---TITLE BAR -->
+        <div class="title-bar-container"> 
+        <h2 class="subheading">what should i wear?</h2>
+        <div class="bar-buttons">
+          <img src="assets/shrink-icon.png" alt="Shrink Icon" class="bar-button" />
+          <img src="assets/close-icon.png" alt="Close Icon" class="bar-button" />
         </div>
+        </div>
+    <!-- MAIN APP WINDOW -->
+    <div class ="app-window">
+    <!-- Background + Game Area -->
+    <div class="game-content">
+      <img src="assets/Landscape 1.png" alt="Background Image" class="background-image">  
+     <!-- CHARACTER -->
+      <div class="main-content">
+        <img src="assets/base.png" id="base-character" class="character"/>
+          <img id="character-accessory" class="layer"/>
+          <img id="character-top" class="layer" />
+          <img id="character-bottom" class="layer" />
+          <img id="character-dress" class="layer" />
       </div>
-
-      <button id="right-background-button">→</button>
-
-      <!-- Outfit Category Buttons -->
-      <div class="option-panel"> 
-        <button id="shirt-button" class="option-button">👕</button>
-        <button id="skirt-button" class="option-button">👗</button>
-        <button id="hat-button" class="option-button">🎩</button>
-        <button id="done-button">✅</button>
-      </div>
-    </div>  
-
-    <!-- Selection Panel (populated via JS) -->
-    <div class="selection-container">
-      <div id="shirt-options" class="item-options"></div>
-      <div id="skirt-options" class="item-options"></div>
-      <div id="hat-options" class="item-options"></div>
+        <!-- Tab Button row -->
+      <div class="tab-button-row">
+        <button class="tab-button" data-category="accessory"><img src="assets/haticon.png" alt="Hat Icon"></button>
+        <button class="tab-button" data-category="top"><img src="assets/topicon.png" alt="Top Icon"></button>
+        <button class="tab-button" data-category="dress"><img src="assets/dressicon.png" alt="Dress Icon"></button>
+        <button class="tab-button" data-category="bottom"><img src="assets/pantsicon.png" alt="Pants Icon"></button>
+      </div>     
+    </div> <!--Game Content--->
+      <!-- Clothes Panel-->
+        <div class="clothes-panel"> 
+          <button class="panel-button" id="back-button"><img src="assets/backbutton.png" alt="Back Button"></button>
+            <div class="clothes-container">
+              <!-- JS will inject up to 4 buttons here based on category -->
+            </div>
+          <button class="panel-button" id="next-button"><img src="assets/nextbutton.png" alt="Next Button"></button>
+        </div> <!---clothes panel-->
+    </div> <!---app window-->
+    <!--- Footer -->
+    <div class="footer">
+      <p class="footer-text">Made with ❤️ by Lara</p>
     </div>
+  </div> <!--body-->
+</body>
 
-  </div>
-</div>
-<body>
   <!-- Link to your JavaScript - don't change unless you rename index.js -->
-  <script src="index.js"></script>
+  <script src="script.js"></script>
